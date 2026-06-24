@@ -108,20 +108,24 @@
   --font-mono: var(--font-geist-mono);
   --animate-marquee: marquee var(--duration) infinite linear;
   --animate-marquee-vertical: marquee-vertical var(--duration) linear infinite;
+
   @keyframes marquee {
-  from {
-    transform: translateX(0);
+    from {
+      transform: translateX(0);
     }
-  to {
-    transform: translateX(calc(-100% - var(--gap)));
+
+    to {
+      transform: translateX(calc(-100% - var(--gap)));
     }
   }
+
   @keyframes marquee-vertical {
-  from {
-    transform: translateY(0);
+    from {
+      transform: translateY(0);
     }
-  to {
-    transform: translateY(calc(-100% - var(--gap)));
+
+    to {
+      transform: translateY(calc(-100% - var(--gap)));
     }
   }
 }
@@ -134,7 +138,7 @@
   body {
     @apply bg-background text-foreground;
     font-family: var(--font-geist-sans), "Segoe UI", sans-serif;
-    background-image: 
+    background-image:
       linear-gradient(rgba(139, 92, 246, 0.015) 1px, transparent 1px),
       linear-gradient(90deg, rgba(139, 92, 246, 0.015) 1px, transparent 1px);
     background-size: 40px 40px;
@@ -214,6 +218,7 @@
   from {
     transform: translateX(0);
   }
+
   to {
     transform: translateX(calc(-100% - var(--gap)));
   }
@@ -230,6 +235,7 @@
   from {
     transform: translateY(0);
   }
+
   to {
     transform: translateY(calc(-100% - var(--gap)));
   }
@@ -244,18 +250,21 @@
 
 @layer components {
   .ui-panel {
-    @apply rounded-2xl border border-[var(--border)] bg-[color:color-mix(in_srgb,var(--surface)_96%,var(--primary)_4%)] shadow-[0_8px_32px_rgba(0,0,0,0.5)] backdrop-blur-md transition-all duration-300;
+    @apply rounded-2xl border border-[var(--border)] backdrop-blur-md transition-all duration-300;
+    background-color: color-mix(in srgb, var(--surface) 96%, var(--primary) 4%);
+    box-shadow: 0 8px 32px rgba(0, 0, 0, 0.5);
   }
 
   .ui-input {
     @apply w-full rounded-xl border border-[var(--border)] bg-[var(--surface-elevated)] px-3 py-2.5 text-sm text-[var(--foreground)] outline-none transition-all duration-200;
-    @apply placeholder:text-[color:color-mix(in_srgb,var(--muted)_90%,white_10%)];
     @apply focus:border-[var(--primary)] focus:ring-2 focus:ring-[var(--ring)];
+  }
+  .ui-input::placeholder {
+    color: color-mix(in srgb, var(--muted) 90%, white 10%);
   }
 
   .ui-select {
     @apply w-full appearance-none rounded-xl border border-[var(--border)] bg-[var(--surface-elevated)] px-3 py-2.5 pr-9 text-sm text-[var(--foreground)] outline-none transition-all duration-200;
-    @apply placeholder:text-[color:color-mix(in_srgb,var(--muted)_90%,white_10%)];
     @apply focus:border-[var(--primary)] focus:ring-2 focus:ring-[var(--ring)];
     background-image:
       linear-gradient(45deg, transparent 50%, #94a3b8 50%),
@@ -266,15 +275,26 @@
     background-size: 6px 6px, 6px 6px;
     background-repeat: no-repeat;
   }
+  .ui-select::placeholder {
+    color: color-mix(in srgb, var(--muted) 90%, white 10%);
+  }
 
   .ui-btn-primary {
-    @apply inline-flex items-center justify-center gap-2 rounded-xl bg-[linear-gradient(135deg,var(--primary),var(--accent))] px-4 py-2.5 text-sm font-semibold text-white transition-all duration-300 shadow-[0_4px_14px_rgba(139,92,246,0.3)];
-    @apply hover:brightness-110 hover:shadow-[0_6px_20px_rgba(217,70,239,0.4)] hover:scale-[1.02] focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-purple-400/60 disabled:cursor-not-allowed disabled:opacity-65 disabled:scale-100 disabled:shadow-none;
+    @apply inline-flex items-center justify-center gap-2 rounded-xl px-4 py-2.5 text-sm font-semibold text-white transition-all duration-300;
+    @apply hover:brightness-110 hover:scale-[1.02] focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-purple-400/60 disabled:cursor-not-allowed disabled:opacity-65 disabled:scale-100;
+    background-image: linear-gradient(135deg, var(--primary), var(--accent));
+    box-shadow: 0 4px 14px rgba(139, 92, 246, 0.3);
+  }
+  .ui-btn-primary:hover {
+    box-shadow: 0 6px 20px rgba(217, 70, 239, 0.4);
   }
 
   .ui-btn-secondary {
     @apply inline-flex items-center justify-center gap-2 rounded-xl border border-[var(--border)] bg-[var(--surface-elevated)] px-4 py-2.5 text-sm font-medium text-[var(--foreground)] transition-all duration-300;
-    @apply hover:border-purple-500/50 hover:bg-[color:color-mix(in_srgb,var(--surface-elevated)_90%,var(--primary)_10%)] hover:scale-[1.01] focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-purple-400/30;
+    @apply hover:border-purple-500/50 hover:scale-[1.01] focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-purple-400/30;
+  }
+  .ui-btn-secondary:hover {
+    background-color: color-mix(in srgb, var(--surface-elevated) 90%, var(--primary) 10%);
   }
 
   .ui-btn-danger {
@@ -287,7 +307,8 @@
   }
 
   .ui-dialog-panel {
-    @apply w-full rounded-2xl border border-[var(--border)] bg-[var(--surface)] shadow-[0_30px_80px_rgba(0,0,0,0.45)];
+    @apply w-full rounded-2xl border border-[var(--border)] bg-[var(--surface)];
+    box-shadow: 0 30px 80px rgba(0, 0, 0, 0.45);
   }
 }
 
@@ -300,17 +321,36 @@
 .bg-\[\#0a0a0a\],
 .bg-\[\#050505\],
 .bg-black,
-main.bg-\[\#0A0A0A\],
 div.bg-\[\#0A0A0A\],
 div.bg-\[\#0a0a0a\] {
   background-color: var(--background) !important;
 }
 
+/* Landing Page Main background makeover - Cosmic gradient + subtle grid */
+main.min-h-screen.bg-\[\#0A0A0A\],
+section.min-h-screen.bg-\[\#121212\] {
+  background-color: var(--background) !important;
+  background-image:
+    radial-gradient(circle at 10% 10%, rgba(139, 92, 246, 0.12) 0%, transparent 45%),
+    radial-gradient(circle at 90% 20%, rgba(217, 70, 239, 0.08) 0%, transparent 40%),
+    radial-gradient(circle at 50% 65%, rgba(6, 182, 212, 0.04) 0%, transparent 50%),
+    linear-gradient(rgba(139, 92, 246, 0.015) 1px, transparent 1px),
+    linear-gradient(90deg, rgba(139, 92, 246, 0.015) 1px, transparent 1px) !important;
+  background-size: auto, auto, auto, 40px 40px, 40px 40px !important;
+  background-attachment: fixed !important;
+}
+
 /* 2. Sidebars and Sticky Navigation Bars */
-aside.bg-\[\#050505\],
-nav.sticky.bg-\[\#050505\]\/80,
-div.bg-\[\#050505\]\/80 {
+aside.bg-\[\#050505\] {
   background-color: var(--sidebar) !important;
+  border-right: 1px solid var(--border) !important;
+}
+
+header.sticky.top-0,
+nav.sticky.bg-\[\#050505\]\/80,
+.bg-\[\#0A0A0A\]\/80 {
+  background-color: rgba(6, 5, 11, 0.75) !important;
+  border-bottom: 1px solid var(--border) !important;
   backdrop-filter: blur(20px) !important;
 }
 
@@ -319,15 +359,38 @@ div.bg-\[\#050505\]\/80 {
 .bg-\[\#0B0B0B\],
 .bg-\#0b0b0b,
 .bg-white\/\[0\.02\],
-.bg-white\/\[0\.03\] {
+.bg-white\/\[0\.03\],
+.bg-\[\#121212\],
+.bg-\[\#1c1c1c\] {
   background-color: var(--surface) !important;
 }
 
 .bg-\[\#111111\],
 .bg-\[\#112441\],
 .bg-\[\#0d1b35\],
-.bg-\[\#0D1B35\] {
+.bg-\[\#0D1B35\],
+.bg-\[\#1c1c1c\] {
   background-color: var(--surface-elevated) !important;
+}
+
+/* Card hover animation overloads for Landing page & Dashboard */
+article.group.relative.overflow-hidden.rounded-3xl.border,
+.bg-\[\#1c1c1c\] {
+  transition: all 0.4s cubic-bezier(0.16, 1, 0.3, 1) !important;
+}
+
+article.group.relative.overflow-hidden.rounded-3xl.border:hover,
+.bg-\[\#1c1c1c\]:hover {
+  border-color: rgba(139, 92, 246, 0.3) !important;
+  box-shadow: 0 12px 30px rgba(139, 92, 246, 0.08) !important;
+  transform: translateY(-3px) !important;
+}
+
+/* Serif font style makeover - soft high-end typography shadow glow */
+.font-serif {
+  font-family: 'Playfair Display', 'Merriweather', Georgia, serif !important;
+  letter-spacing: -0.02em !important;
+  text-shadow: 0 0 60px rgba(139, 92, 246, 0.18) !important;
 }
 
 /* 4. Text Highlight and Color Overrides */
@@ -356,12 +419,12 @@ button:hover .text-sky-400 {
   background-color: var(--primary) !important;
 }
 
-.peer-checked\:bg-sky-500:checked ~ .peer-checked\:bg-sky-500 {
+.peer-checked\:bg-sky-500:checked~.peer-checked\:bg-sky-500 {
   background-color: var(--primary) !important;
   border-color: var(--primary) !important;
 }
 
-.peer-checked\:border-sky-500:checked ~ .peer-checked\:border-sky-500 {
+.peer-checked\:border-sky-500:checked~.peer-checked\:border-sky-500 {
   border-color: var(--primary) !important;
 }
 
@@ -422,7 +485,6 @@ button:hover .text-sky-400 {
   box-shadow: 0 0 20px -5px rgba(139, 92, 246, 0.5) !important;
 }
 
-.bg-sky-500\.blur-\[140px\],
 .bg-sky-500.blur-\[140px\],
 .bg-sky-500.blur-\[120px\] {
   background-color: var(--primary) !important;
@@ -431,7 +493,7 @@ button:hover .text-sky-400 {
 
 /* 8. Landing Page Hero CTA Premium Makeover */
 .inline-flex.items-center.justify-center.rounded-full.bg-white,
-a\[href="\/signup"\].bg-white {
+a[href="/signup"].bg-white {
   background: linear-gradient(135deg, var(--primary), var(--accent)) !important;
   color: white !important;
   box-shadow: 0 4px 20px rgba(139, 92, 246, 0.4) !important;
@@ -440,10 +502,8 @@ a\[href="\/signup"\].bg-white {
 }
 
 .inline-flex.items-center.justify-center.rounded-full.bg-white:hover,
-a\[href="\/signup"\].bg-white:hover {
+a[href="/signup"].bg-white:hover {
   transform: translateY(-2px) scale(1.03) !important;
   box-shadow: 0 6px 24px rgba(217, 70, 239, 0.5) !important;
   filter: brightness(1.1) !important;
 }
-
-
