@@ -1,0 +1,12 @@
+{
+  "name": "loomin",
+  "version": "1.0.0",
+  "description": "Marketing is a high-friction loop where 70% of time is manual. Unlike rigid \"if-then\" tools, Agentic AI is a teammate using reasoning, tool-use, and self-correction. It adapts to trends in real-time to hit business goals, freeing humans to focus on strategy rather than repetitive execution.",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC"
+}
