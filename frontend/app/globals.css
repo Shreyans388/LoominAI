@@ -1,61 +1,61 @@
-﻿@import "tailwindcss";
+@import "tailwindcss";
 @import "tw-animate-css";
 @import "shadcn/tailwind.css";
 
 @custom-variant dark (&:where(.dark, .dark *));
 
 :root {
-  --background: #000000;
-  --foreground: #e7f1ff;
+  --background: #030209;
+  --foreground: #f3f4f6;
 
-  --card: #0d1b35;
-  --card-foreground: #e7f1ff;
+  --card: #090812;
+  --card-foreground: #f3f4f6;
 
-  --popover: #112441;
-  --popover-foreground: #e7f1ff;
+  --popover: #0d0c18;
+  --popover-foreground: #f3f4f6;
 
-  --primary: #1f8fff;
-  --primary-foreground: #f2f8ff;
+  --primary: #8b5cf6;
+  --primary-foreground: #ffffff;
 
-  --secondary: #173053;
-  --secondary-foreground: #e7f1ff;
+  --secondary: #121026;
+  --secondary-foreground: #e5e7eb;
 
-  --muted: #9cb4d4;
-  --muted-foreground: #b7c9e3;
+  --muted: #a78bfa;
+  --muted-foreground: #9ca3af;
 
-  --accent: #2f76c0;
-  --accent-foreground: #f2f8ff;
+  --accent: #d946ef;
+  --accent-foreground: #ffffff;
 
   --destructive: #ef4444;
 
-  --border: #2a4061;
-  --border-strong: #4f78a5;
-  --input: #2a4061;
-  --ring: rgba(76, 162, 255, 0.36);
+  --border: #211a3d;
+  --border-strong: #4c1d95;
+  --input: #121026;
+  --ring: rgba(139, 92, 246, 0.4);
 
-  --radius: 0.625rem;
+  --radius: 0.75rem;
 
-  
-  --chart-1: #6366f1;
-  --chart-2: #22c55e;
+
+  --chart-1: #8b5cf6;
+  --chart-2: #10b981;
   --chart-3: #f59e0b;
   --chart-4: #06b6d4;
-  --chart-5: #ef4444;
+  --chart-5: #ec4899;
 
-  
-  --sidebar: #091a34;
-  --sidebar-foreground: #e7f1ff;
-  --sidebar-primary: #1f8fff;
-  --sidebar-primary-foreground: #f2f8ff;
-  --sidebar-accent: #163154;
-  --sidebar-accent-foreground: #e7f1ff;
-  --sidebar-border: #2a4061;
-  --sidebar-ring: rgba(76, 162, 255, 0.36);
 
-  
-  --surface: #0b0b0b;
-  --surface-elevated: #111111;
-  --surface-soft: #161616;
+  --sidebar: #06050b;
+  --sidebar-foreground: #f3f4f6;
+  --sidebar-primary: #8b5cf6;
+  --sidebar-primary-foreground: #ffffff;
+  --sidebar-accent: #121026;
+  --sidebar-accent-foreground: #f3f4f6;
+  --sidebar-border: #1a1533;
+  --sidebar-ring: rgba(139, 92, 246, 0.4);
+
+
+  --surface: #07060f;
+  --surface-elevated: #0f0d1e;
+  --surface-soft: #141226;
 }
 
 @theme inline {
@@ -134,7 +134,11 @@
   body {
     @apply bg-background text-foreground;
     font-family: var(--font-geist-sans), "Segoe UI", sans-serif;
-    background-image: none;
+    background-image: 
+      linear-gradient(rgba(139, 92, 246, 0.015) 1px, transparent 1px),
+      linear-gradient(90deg, rgba(139, 92, 246, 0.015) 1px, transparent 1px);
+    background-size: 40px 40px;
+    background-attachment: fixed;
   }
 }
 
@@ -185,23 +189,25 @@
 
 .app-grid {
   background-image:
-    radial-gradient(circle at 18% 15%, color-mix(in srgb, var(--accent) 4%, transparent) 0%, transparent 58%),
-    radial-gradient(circle at 85% 0%, color-mix(in srgb, #18a4ff 3%, transparent) 0%, transparent 52%);
+    radial-gradient(circle at 15% 10%, rgba(139, 92, 246, 0.08) 0%, transparent 50%),
+    radial-gradient(circle at 80% 20%, rgba(217, 70, 239, 0.05) 0%, transparent 50%),
+    radial-gradient(circle at 50% 80%, rgba(6, 182, 212, 0.03) 0%, transparent 60%);
+  background-attachment: fixed;
 }
 
 .post-analytics {
-  background: #0b1930;
-  color: #deecff;
+  background: #06050b;
+  color: #f3f4f6;
 }
 
 .post-analytics .analytics-card {
-  background: #112643;
-  border: 1px solid #2a4061;
+  background: #0e0c1a;
+  border: 1px solid #211a3d;
 }
 
 .post-analytics .analytics-card-soft {
-  background: #173053;
-  border: 1px solid #2a4061;
+  background: #151129;
+  border: 1px solid #211a3d;
 }
 
 @keyframes marquee {
@@ -238,19 +244,19 @@
 
 @layer components {
   .ui-panel {
-    @apply rounded-2xl border border-[var(--border)] bg-[var(--surface)] shadow-[0_14px_34px_rgba(2,8,20,0.38)];
+    @apply rounded-2xl border border-[var(--border)] bg-[color:color-mix(in_srgb,var(--surface)_96%,var(--primary)_4%)] shadow-[0_8px_32px_rgba(0,0,0,0.5)] backdrop-blur-md transition-all duration-300;
   }
 
   .ui-input {
-    @apply w-full rounded-xl border border-[var(--border)] bg-[var(--surface-elevated)] px-3 py-2.5 text-sm text-[var(--foreground)] outline-none transition;
+    @apply w-full rounded-xl border border-[var(--border)] bg-[var(--surface-elevated)] px-3 py-2.5 text-sm text-[var(--foreground)] outline-none transition-all duration-200;
     @apply placeholder:text-[color:color-mix(in_srgb,var(--muted)_90%,white_10%)];
-    @apply focus:border-sky-500/70 focus:ring-2 focus:ring-sky-500/25;
+    @apply focus:border-[var(--primary)] focus:ring-2 focus:ring-[var(--ring)];
   }
 
   .ui-select {
-    @apply w-full appearance-none rounded-xl border border-[var(--border)] bg-[var(--surface-elevated)] px-3 py-2.5 pr-9 text-sm text-[var(--foreground)] outline-none transition;
+    @apply w-full appearance-none rounded-xl border border-[var(--border)] bg-[var(--surface-elevated)] px-3 py-2.5 pr-9 text-sm text-[var(--foreground)] outline-none transition-all duration-200;
     @apply placeholder:text-[color:color-mix(in_srgb,var(--muted)_90%,white_10%)];
-    @apply focus:border-sky-500/70 focus:ring-2 focus:ring-sky-500/25;
+    @apply focus:border-[var(--primary)] focus:ring-2 focus:ring-[var(--ring)];
     background-image:
       linear-gradient(45deg, transparent 50%, #94a3b8 50%),
       linear-gradient(135deg, #94a3b8 50%, transparent 50%);
@@ -262,13 +268,13 @@
   }
 
   .ui-btn-primary {
-    @apply inline-flex items-center justify-center gap-2 rounded-xl bg-[linear-gradient(130deg,#2277c8,#149dd8)] px-4 py-2.5 text-sm font-semibold text-white transition;
-    @apply hover:brightness-110 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-sky-400/60 disabled:cursor-not-allowed disabled:opacity-65;
+    @apply inline-flex items-center justify-center gap-2 rounded-xl bg-[linear-gradient(135deg,var(--primary),var(--accent))] px-4 py-2.5 text-sm font-semibold text-white transition-all duration-300 shadow-[0_4px_14px_rgba(139,92,246,0.3)];
+    @apply hover:brightness-110 hover:shadow-[0_6px_20px_rgba(217,70,239,0.4)] hover:scale-[1.02] focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-purple-400/60 disabled:cursor-not-allowed disabled:opacity-65 disabled:scale-100 disabled:shadow-none;
   }
 
   .ui-btn-secondary {
-    @apply inline-flex items-center justify-center gap-2 rounded-xl border border-[var(--border)] bg-[var(--surface-elevated)] px-4 py-2.5 text-sm font-medium text-[var(--foreground)] transition;
-    @apply hover:border-[var(--border-strong)] hover:bg-[color:color-mix(in_srgb,var(--surface-elevated)_84%,#0ea5e9_16%)] focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-sky-400/30;
+    @apply inline-flex items-center justify-center gap-2 rounded-xl border border-[var(--border)] bg-[var(--surface-elevated)] px-4 py-2.5 text-sm font-medium text-[var(--foreground)] transition-all duration-300;
+    @apply hover:border-purple-500/50 hover:bg-[color:color-mix(in_srgb,var(--surface-elevated)_90%,var(--primary)_10%)] hover:scale-[1.01] focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-purple-400/30;
   }
 
   .ui-btn-danger {
@@ -284,4 +290,160 @@
     @apply w-full rounded-2xl border border-[var(--border)] bg-[var(--surface)] shadow-[0_30px_80px_rgba(0,0,0,0.45)];
   }
 }
+
+/* ==========================================================================
+   LOOMIN AI - COMPONENT STYLE INTERCEPTS & TRANSFORMATION OVERRIDES
+   ========================================================================== */
+
+/* 1. Base Background Overrides */
+.bg-\[\#0A0A0A\],
+.bg-\[\#0a0a0a\],
+.bg-\[\#050505\],
+.bg-black,
+main.bg-\[\#0A0A0A\],
+div.bg-\[\#0A0A0A\],
+div.bg-\[\#0a0a0a\] {
+  background-color: var(--background) !important;
+}
+
+/* 2. Sidebars and Sticky Navigation Bars */
+aside.bg-\[\#050505\],
+nav.sticky.bg-\[\#050505\]\/80,
+div.bg-\[\#050505\]\/80 {
+  background-color: var(--sidebar) !important;
+  backdrop-filter: blur(20px) !important;
+}
+
+/* 3. Surface Cards and Elevated Panels */
+.bg-\[\#0b0b0b\],
+.bg-\[\#0B0B0B\],
+.bg-\#0b0b0b,
+.bg-white\/\[0\.02\],
+.bg-white\/\[0\.03\] {
+  background-color: var(--surface) !important;
+}
+
+.bg-\[\#111111\],
+.bg-\[\#112441\],
+.bg-\[\#0d1b35\],
+.bg-\[\#0D1B35\] {
+  background-color: var(--surface-elevated) !important;
+}
+
+/* 4. Text Highlight and Color Overrides */
+.text-sky-300,
+.text-sky-400,
+.text-sky-500,
+.text-blue-300,
+.text-blue-400,
+.text-blue-500 {
+  color: var(--primary) !important;
+}
+
+.hover\:text-sky-400:hover,
+.group-hover\:text-sky-400:hover,
+.group:hover .group-hover\:text-sky-400,
+a:hover .text-sky-400,
+button:hover .text-sky-400 {
+  color: var(--accent) !important;
+}
+
+/* 5. Button and Element Backgrounds */
+.bg-sky-400,
+.bg-sky-500,
+.bg-blue-400,
+.bg-blue-500 {
+  background-color: var(--primary) !important;
+}
+
+.peer-checked\:bg-sky-500:checked ~ .peer-checked\:bg-sky-500 {
+  background-color: var(--primary) !important;
+  border-color: var(--primary) !important;
+}
+
+.peer-checked\:border-sky-500:checked ~ .peer-checked\:border-sky-500 {
+  border-color: var(--primary) !important;
+}
+
+/* Translucent Backgrounds */
+.bg-sky-500\/5,
+.bg-sky-500\/\[0\.03\] {
+  background-color: rgba(139, 92, 246, 0.05) !important;
+}
+
+.bg-sky-500\/10,
+.bg-sky-500\/20,
+.bg-sky-500\/15 {
+  background-color: rgba(139, 92, 246, 0.12) !important;
+}
+
+.bg-sky-500\/30,
+.bg-sky-500\/35 {
+  background-color: rgba(139, 92, 246, 0.25) !important;
+}
+
+/* 6. Border Overrides */
+.border-white\/5,
+.border-white\/10 {
+  border-color: var(--border) !important;
+}
+
+.border-sky-500,
+.border-sky-500\/20,
+.border-sky-500\/30,
+.border-sky-500\/50,
+.border-sky-500\/10 {
+  border-color: rgba(139, 92, 246, 0.2) !important;
+}
+
+.hover\:border-sky-500\/30:hover,
+.group-hover\:border-sky-500\/50:hover,
+.group-hover\:border-sky-500\/20:hover,
+.group:hover .group-hover\:border-sky-500\/50,
+.group:hover .group-hover\:border-sky-500\/20 {
+  border-color: rgba(217, 70, 239, 0.4) !important;
+}
+
+/* 7. Background Gradient Overrides */
+.from-sky-400,
+.from-blue-500 {
+  --tw-gradient-from: var(--primary) !important;
+  --tw-gradient-stops: var(--tw-gradient-from), var(--tw-gradient-to, var(--accent)) !important;
+}
+
+.to-indigo-600,
+.to-cyan-500 {
+  --tw-gradient-to: var(--accent) !important;
+}
+
+/* Glow ring & Shadow Overrides */
+.shadow-\[0_0_20px_-5px_rgba\(14\,165\,233\,0\.5\)\],
+.shadow-\[0_0_16px_-6px_rgba\(14\,165\,233\,0\.35\)\] {
+  box-shadow: 0 0 20px -5px rgba(139, 92, 246, 0.5) !important;
+}
+
+.bg-sky-500\.blur-\[140px\],
+.bg-sky-500.blur-\[140px\],
+.bg-sky-500.blur-\[120px\] {
+  background-color: var(--primary) !important;
+  opacity: 0.15 !important;
+}
+
+/* 8. Landing Page Hero CTA Premium Makeover */
+.inline-flex.items-center.justify-center.rounded-full.bg-white,
+a\[href="\/signup"\].bg-white {
+  background: linear-gradient(135deg, var(--primary), var(--accent)) !important;
+  color: white !important;
+  box-shadow: 0 4px 20px rgba(139, 92, 246, 0.4) !important;
+  border: none !important;
+  transition: all 0.3s cubic-bezier(0.16, 1, 0.3, 1) !important;
+}
+
+.inline-flex.items-center.justify-center.rounded-full.bg-white:hover,
+a\[href="\/signup"\].bg-white:hover {
+  transform: translateY(-2px) scale(1.03) !important;
+  box-shadow: 0 6px 24px rgba(217, 70, 239, 0.5) !important;
+  filter: brightness(1.1) !important;
+}
+
 
